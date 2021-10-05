@@ -1,0 +1,49 @@
+mongodb
+
+E:/vue_actix_todo_app/server/data/mongodb
+
+データベースの起動
+mongod --dbpath E:/vue_actix_todo_app/server/data/mongodb --auth
+
+ロールの作成(パスワードを入力)
+mongo --host localhost --port 27017
+use admin
+db.createUser({user:"mongo", pwd:"gami3377", roles:["root"]})
+
+データベースの停止
+mongo --host localhost --port 27017 -u mongo
+use admin
+db.shutdownServer()
+
+コレクションの削除<- bashでできないか？
+mongo --host localhost --port 27017 -u mongo
+use todo_app
+db.todo_comments.drop()
+
+postgresdb
+
+E:/vue_actix_todo_app/server/data/postgresdb
+
+データベースフォルダの初期化
+pg_ctl init -D E:/vue_actix_todo_app/server/data/postgresdb
+データベースの起動
+pg_ctl start -D E:/vue_actix_todo_app/server/data/postgresdb
+
+データベースの起動確認
+pg_ctl status -D E:/vue_actix_todo_app/server/data/postgresdb
+
+管理者ロールを作成(パスワードを入力)
+createuser -h localhost -p 5432 -s -P postgres
+
+todo_appデータベースの作成
+psql -h localhost -p 5432 -U postgres
+CREATE DATABASE todo_app;
+
+migrationをrun
+diesel migration run
+
+migrationをredo
+diesel migration redo
+
+データベースの停止
+pg_ctl stop -D E:/vue_actix_todo_app/server/data/postgresdb

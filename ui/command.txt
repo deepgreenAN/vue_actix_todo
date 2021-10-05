@@ -1,0 +1,11 @@
+npm install -D tailwindcss@latest
+npm install -D postcss@latest
+npm install -D autoprefixer@latest <- 出来なかった(os固有の問題)
+yarn add -D autoprefixer@latest
+
+npm run serve
+
+npm uninstall tailwindcss postcss
+yarn remove autoprefixer
+
+yarn add -D tailwindcss@npm:@tailwindcss/postcss7-compat @tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9
